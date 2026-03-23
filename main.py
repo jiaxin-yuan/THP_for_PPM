@@ -1,24 +1,3 @@
-"""
-main.py
--------
-Training entry point for THPPPM.
-
-Usage
------
-Train::
-
-    python main.py \\
-        --fold_dataset data/bpic2012/fold1/bpic2012 \\
-        --full_dataset data/bpic2012/full/bpic2012  \\
-        --train --epoch 100 --batch_size 32 --lr 0.001
-
-Train + evaluate on validation::
-
-    python main.py \\
-        --fold_dataset data/bpic2012/fold1/bpic2012 \\
-        --full_dataset data/bpic2012/full/bpic2012  \\
-        --train --epoch 50 --device cuda
-"""
 
 import argparse
 import os
@@ -35,9 +14,6 @@ from utils import set_all_seeds
 from transformer.model import Transformer
 
 
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(

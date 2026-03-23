@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-测试脚本 - 完整版（包含 gen_prefix 实现）
-"""
+
 
 import pathlib
 from pathlib import Path
@@ -49,23 +47,7 @@ def update_evaluation_mean(eval_dict: EvaluationDict, prefix_length: int, new_ev
 
 
 def gen_prefix(batch):
-    """
-    将 batch 中的每个序列展开成所有可能的前缀
-    
-    Example:
-        Input:  [[a, b, c], [x, y]]
-        Output: [[a, 0, 0], [a, b, 0], [a, b, c], [x, 0], [x, y]]
-    
-    这样可以一次性评估所有前缀长度，与 benchmark papers 保持一致。
-    
-    Args:
-        batch: tuple of (event_time, time_gap, r_time, event_type)
-               shape: [batch_size, max_seq_len]
-    
-    Returns:
-        expanded_batch: tuple of 4 tensors
-                       shape: [total_prefixes, max_seq_len]
-    """
+   
     event_time, time_gap, r_time, event_type = batch
     
     batch_size, max_len = event_type.shape
@@ -77,15 +59,15 @@ def gen_prefix(batch):
     all_event_type = []
     
     for i in range(batch_size):
-        # 找到序列实际长度（不包括 PAD）
+       
         seq_len = (event_type[i] != PAD).sum().item()
         
         if seq_len == 0:
-            continue  # 跳过空序列
+            continue 
         
-        # 生成所有前缀：长度从 1 到 seq_len
+       
         for k in range(1, seq_len + 1):
-            # 创建前缀：保留前 k 个元素，其余填 PAD
+            
             prefix_event_type = torch.full((max_len,), PAD, dtype=event_type.dtype, device=device)
             prefix_event_type[:k] = event_type[i, :k]
             
@@ -103,7 +85,7 @@ def gen_prefix(batch):
             all_time_gap.append(prefix_time_gap)
             all_r_time.append(prefix_r_time)
     
-    # Stack 成新的 batch
+   
     if len(all_event_type) == 0:
         return (
             torch.empty(0, max_len, dtype=event_time.dtype, device=device),
@@ -312,7 +294,6 @@ if __name__ == "__main__":
     print(f"Checkpoint embedding shape: {emb_weight_shape}")
     print(f"Checkpoint linear shape:    {linear_weight_shape}")
     
-    # Transformer 内部会对 num_types +1，所以传入时减 1
     num_types_to_pass = emb_num_types - 1
     
     print(f"\n→ Passing num_types={num_types_to_pass} to Transformer (will become {emb_num_types} internally)")
