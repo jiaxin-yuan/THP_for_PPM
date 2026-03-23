@@ -255,4 +255,4 @@ dependencies:
       - wrapt==1.16.0
       - y-py==0.6.2
       - ypy-websocket==0.8.4
-prefix: /home/lamsade/jyuan/miniconda3/envs/thp
+
