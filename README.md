@@ -35,6 +35,7 @@ thpppm/
 ├── saved_models/             # checkpoints (generated)
 ├── results/                  # results (generated)
 └── runs/                     # TensorBoard logs (generated)
+└── additional_results/       # additional results mentioned in the paper
 ```
 
 ## Quick start
@@ -62,12 +63,17 @@ data/
 ├── test_fold0_variation0_BPI_Challenge_2012_A.csv
 └── BPI_Challenge_2012_A.csv      
 ```
-
+You can also follow benchmark paper's repository to generate other datasets: https://gitlab.citius.gal/efren.rama/pmdlcompararator
 
 ### 3. Train
 
 ```bash
 bash train.sh
+```
+
+One "screen session" named with the name of dataset is created, where you can attach the session using:
+```bash
+screen -r <session-name>
 ```
 
 ### 4. Test

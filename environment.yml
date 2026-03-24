@@ -1,4 +1,4 @@
-name: thp
+name: thppm
 channels:
   - conda-forge
   - defaults
