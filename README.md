@@ -35,7 +35,7 @@ thpppm/
 ├── saved_models/             # checkpoints (generated)
 ├── results/                  # results (generated)
 └── runs/                     # TensorBoard logs (generated)
-└── additional_results/       # additional results mentioned in the paper
+└── additional_results/       # additional results mentioned in the paper (Coming soon due to large size, ETA by March 30th)
 ```
 
 ## Quick start
