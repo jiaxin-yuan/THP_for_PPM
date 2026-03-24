@@ -1,8 +1,3 @@
-"""
-utils/reproducibility.py
-------------------------
-Seed-setting utilities for deterministic experiments.
-"""
 
 import os
 import random

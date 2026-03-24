@@ -191,9 +191,6 @@ def df_to_dict(
     )
 
 
-# ---------------------------------------------------------------------------
-# PyTorch Dataset & DataLoader
-# ---------------------------------------------------------------------------
 
 class EventData(torch.utils.data.Dataset):
     """PyTorch Dataset wrapping a list of Sequential Event Streams.
