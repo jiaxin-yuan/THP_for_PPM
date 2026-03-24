@@ -65,7 +65,7 @@ data/
 ```
 You can also follow benchmark paper's repository to generate other datasets: https://gitlab.citius.gal/efren.rama/pmdlcompararator
 
-### 3. Train
+### 3. Train & Test
 
 ```bash
 bash train.sh
@@ -76,11 +76,6 @@ One "screen session" named with the name of dataset is created, where you can at
 screen -r <session-name>
 ```
 
-### 4. Test
-
-```bash
-bash test.sh
-```
 
 
 ## TensorBoard
